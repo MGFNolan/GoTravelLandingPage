@@ -1,5 +1,18 @@
+// page
+import Header from "./components/Header";
+import Navigation from "./components/Navigation/Navigation";
+
+// header
+import Page from "./components/page";
+
 function App() {
-  return <div className="font-bold text-blue-600">Hello, world!</div>;
+  return (
+    <Page>
+      <Header>
+        <Navigation />
+      </Header>
+    </Page>
+  );
 }
 
 export default App;
