@@ -30,7 +30,7 @@ export default function Navigation() {
                   <CaretUp className="size-3.5 fill-gray-600 rotate-180 transition-all duration-250 group-hover:fill-black group-hover:rotate-360" />
                 </span>
               )}
-              {/* {link.dropdown && <DesktopDropdown links={link.dropdownLinks} />} */}
+              {link.dropdown && <DesktopDropdown links={link.dropdownLinks} />}
             </li>
           ))}
         </ul>
