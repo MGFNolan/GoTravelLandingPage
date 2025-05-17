@@ -6,6 +6,10 @@ import Hero from "./components/Hero/Hero";
 // header
 import Page from "./components/page";
 
+// main
+import Main from "./components/Main";
+import Steps from "./components/Steps/Steps";
+
 function App() {
   return (
     <Page>
@@ -13,6 +17,9 @@ function App() {
         <Navigation />
         <Hero />
       </Header>
+      <Main>
+        <Steps />
+      </Main>
     </Page>
   );
 }
