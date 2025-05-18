@@ -24,7 +24,7 @@ export default function ExploreMore() {
           </div>
 
           <div className="mb-2 flex gap-x-6">
-            <button className="bg-grey-300 not-disabled:hover:bg-grey-400 flex size-18 cursor-pointer place-content-center rounded-full transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50" onClick={handleLeftClick} disabled={currentIndex === 0} aria-label="arrow left">
+            <button className="bg-primary-700 not-disabled:hover:bg-primary-800 flex size-18 cursor-pointer place-content-center rounded-full transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50" onClick={handleLeftClick} disabled={currentIndex === 0} aria-label="arrow left">
               <CaretUp className="w-6 -rotate-90 fill-white" />
             </button>
 
