@@ -13,7 +13,7 @@ export default function Rating(props: RatingProps) {
     <motion.div
     initial={{opacity: 0, y: 100, scale: 0.95}}
     whileInView={{opacity: 1, y: 0, scale: 1}}
-    viewport={{once: true, amount: 0.9}}
+    viewport={{once: true, amount: 0}}
     transition={{duration: 0.5, ease: "easeInOut"}}
       className={`absolute flex gap-x-2.5 rounded-2xl bg-white/85 py-3.5 pr-5 pl-3 drop-shadow-[0px_4px_30px_rgba(0,0,0,0.12)] backdrop-blur-3xl ${props.className}`}
     >
