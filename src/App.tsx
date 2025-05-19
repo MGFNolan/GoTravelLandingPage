@@ -12,6 +12,7 @@ import Steps from "./components/Steps/Steps";
 import Services from "./components/Services/Services";
 import News from "./components/News/News";
 import ExploreMore from "./components/ExploreMore/ExploreMore";
+import FrequentTraveller from "./components/FrequentTraveller";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Services />
         <News />
         <ExploreMore />
+        <FrequentTraveller />
       </Main>
     </Page>
   );
