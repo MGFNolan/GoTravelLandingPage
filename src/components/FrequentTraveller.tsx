@@ -4,7 +4,23 @@ import { useState, MouseEvent } from "react";
 import Checkmark from "./Icons/Checkmark";
 import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
+interface FormState {
+  currentState: "idle" | "pending" | "success" | "error";
+  errorMessage: string | null;
+}
+
+const buttonStateClass = {
+  idle: "bg-primary-700 opacity-100",
+  pending: "bg-primary-700 opacity-50",
+  success: "bg-green opacity-100",
+  error: "bg-red opacity-100",
+};
+
 export default function FrequentTraveller() {
+  const [formState, setFormState] = useState<FormState>({
+    currentState: "success",
+    errorMessage: null,
+  });
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const { values, errors, isValid, handleChange, resetForm } =
@@ -17,7 +33,15 @@ export default function FrequentTraveller() {
     e.preventDefault();
 
     if (isChecked && isValid) {
-      // submit form
+      setFormState({
+        currentState: "success",
+        errorMessage: null,
+      });
+
+      setTimeout(
+        () => setFormState({ currentState: "idle", errorMessage: null }),
+        2000,
+      );
 
       resetForm();
     }
@@ -55,17 +79,17 @@ export default function FrequentTraveller() {
               className={`placeholder:text-grey-400 w-full rounded-lg bg-white py-3.5 pl-4 transition-all duration-200 placeholder:font-light focus:outline-1 disabled:opacity-50 ${errors.fullName && "outline-red"}`}
             />
             <AnimatePresence>
-            {errors.fullName && (
-              <motion.p
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.15 }}
-                className="text-red pt-1 pl-0.5 text-sm"
-              >
-                {errors.fullName}
-              </motion.p>
-            )}
+              {errors.fullName && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.15 }}
+                  className="text-red pt-1 pl-0.5 text-sm"
+                >
+                  {errors.fullName}
+                </motion.p>
+              )}
             </AnimatePresence>
           </label>
           <label className="mb-12">
@@ -82,17 +106,17 @@ export default function FrequentTraveller() {
               className={`placeholder:text-grey-400 w-full rounded-lg bg-white py-3.5 pl-4 transition-all duration-200 placeholder:font-light focus:outline-1 disabled:opacity-50 ${errors.emailAddress && "outline-red"}`}
             />
             <AnimatePresence>
-            {errors.emailAddress && (
-              <motion.p
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.15 }}
-                className="text-red pt-1 pl-0.5 text-sm"
-              >
-                {errors.fullName}
-              </motion.p>
-            )}
+              {errors.emailAddress && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.15 }}
+                  className="text-red pt-1 pl-0.5 text-sm"
+                >
+                  {errors.fullName}
+                </motion.p>
+              )}
             </AnimatePresence>
           </label>
           <div className="flex flex-wrap items-center justify-between gap-8">
@@ -111,10 +135,14 @@ export default function FrequentTraveller() {
               </p>
             </label>
             <button
-              className="bg-primary-700 hover:bg-primary-800 cursor-pointer rounded-[0.625rem] px-8 py-3.5 font-medium text-white transition-all duration-200 disabled:cursor-not-allowed"
+              className={`enabled:hover:bg-primary-800 cursor-pointer rounded-[0.625rem] px-8 py-3.5 font-medium text-white transition-all duration-200 disabled:cursor-not-allowed ${buttonStateClass[formState.currentState]}`}
               onClick={handleSubmit}
+              disabled={formState.currentState !== "idle"}
             >
-              Learn More
+              {formState.currentState === "idle" && "Learn More"}
+              {formState.currentState === "pending" && "Submitting..."}
+              {formState.currentState === "success" && "Success!"}
+              {formState.currentState === "error" && "Submission failed"}
             </button>
           </div>
         </form>
