@@ -15,6 +15,9 @@ import ExploreMore from "./components/ExploreMore/ExploreMore";
 import FrequentTraveller from "./components/FrequentTraveller";
 import Testimonials from "./components/Testimonials/Testimonials";
 
+// footer
+import Footer from "./components/Footer";
+
 function App() {
   return (
     <Page>
@@ -22,6 +25,7 @@ function App() {
         <Navigation />
         <Hero />
       </Header>
+
       <Main>
         <Steps />
         <Services />
@@ -30,6 +34,8 @@ function App() {
         <FrequentTraveller />
         <Testimonials />
       </Main>
+
+      <Footer />
     </Page>
   );
 }
