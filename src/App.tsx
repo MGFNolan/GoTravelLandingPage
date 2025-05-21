@@ -1,3 +1,6 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 // page
 import Header from "./components/Header";
 import Navigation from "./components/Navigation/Navigation";
@@ -18,25 +21,31 @@ import Testimonials from "./components/Testimonials/Testimonials";
 // footer
 import Footer from "./components/Footer";
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <Page>
-      <Header>
-        <Navigation />
-        <Hero />
-      </Header>
+    <QueryClientProvider client={queryClient}>
+      <Page>
+        <Header>
+          <Navigation />
+          <Hero />
+        </Header>
 
-      <Main>
-        <Steps />
-        <Services />
-        <News />
-        <ExploreMore />
-        <FrequentTraveller />
-        <Testimonials />
-      </Main>
+        <Main>
+          <Steps />
+          <Services />
+          <News />
+          <ExploreMore />
+          <FrequentTraveller />
+          <Testimonials />
+        </Main>
 
-      <Footer />
-    </Page>
+        <Footer />
+      </Page>
+
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 
