@@ -17,13 +17,14 @@ export async function getBlogPosts() {
   }
 
   const blogPosts: BlogPost[] = data.map((post) => {
-    return { id: post.id,
-        img: post.img_url,
-        alt: post.img_alt,
-        date: post.date_created,
-        title: post.article_title,
-        summary: post.article_summary,
-     };
+    return {
+      id: post.id,
+      img: post.img_url,
+      alt: post.img_alt,
+      date: post.date_created,
+      title: post.article_title,
+      summary: post.article_summary,
+    };
   });
 
   return blogPosts;
