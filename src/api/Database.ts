@@ -36,6 +36,7 @@ export type Database = {
     Tables: {
       BlogPosts: {
         Row: {
+          article_body: string
           article_summary: string
           article_title: string
           date_created: string
@@ -44,6 +45,7 @@ export type Database = {
           img_url: string
         }
         Insert: {
+          article_body: string
           article_summary: string
           article_title: string
           date_created: string
@@ -52,6 +54,7 @@ export type Database = {
           img_url: string
         }
         Update: {
+          article_body?: string
           article_summary?: string
           article_title?: string
           date_created?: string
@@ -66,19 +69,19 @@ export type Database = {
           created_at: number
           email_address: string
           full_name: string
-          lead_id: string
+          leadId: string
         }
         Insert: {
           created_at: number
           email_address: string
           full_name: string
-          lead_id?: string
+          leadId?: string
         }
         Update: {
           created_at?: number
           email_address?: string
           full_name?: string
-          lead_id?: string
+          leadId?: string
         }
         Relationships: []
       }

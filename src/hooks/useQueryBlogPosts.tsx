@@ -6,14 +6,7 @@ export default function useQueryBlogPosts() {
     data: blogPosts,
     error,
     isLoading,
-  } = useQuery({
-    queryKey: ["BlogPosts"],
-    queryFn: getBlogPosts,
-  });
+  } = useQuery({ queryKey: ["BlogPosts"], queryFn: getBlogPosts });
 
-  return {
-    blogPosts,
-    error,
-    isLoading,
-  };
+  return { blogPosts, error, isLoading };
 }

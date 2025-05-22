@@ -1,25 +1,25 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-// page
-import Header from "./components/Header";
-import Navigation from "./components/Navigation/Navigation";
-import Hero from "./components/Hero/Hero";
+// Page
+import Page from "./components/Page";
 
-// header
-import Page from "./components/page";
+// Header
+import Header from "./components/Header.tsx";
+import Navigation from "./components/Navigation/Navigation.tsx";
+import Hero from "./components/Hero/Hero.tsx";
 
-// main
-import Main from "./components/Main";
-import Steps from "./components/Steps/Steps";
-import Services from "./components/Services/Services";
-import News from "./components/News/News";
-import ExploreMore from "./components/ExploreMore/ExploreMore";
-import FrequentTraveller from "./components/FrequentTraveller";
-import Testimonials from "./components/Testimonials/Testimonials";
+// Main
+import Main from "./components/Main.tsx";
+import Steps from "./components/Steps/Steps.tsx";
+import Services from "./components/Services/Services.tsx";
+import News from "./components/News/News.tsx";
+import ExploreMore from "./components/ExploreMore/ExploreMore.tsx";
+import FrequentTravelers from "./components/FrequentTravelers.tsx";
+import Testimonials from "./components/Testimonials/Testimonials.tsx";
 
-// footer
-import Footer from "./components/Footer";
+// Footer
+import Footer from "./components/Footer.tsx";
 
 const queryClient = new QueryClient();
 
@@ -37,13 +37,12 @@ function App() {
           <Services />
           <News />
           <ExploreMore />
-          <FrequentTraveller />
+          <FrequentTravelers />
           <Testimonials />
         </Main>
 
         <Footer />
       </Page>
-
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
