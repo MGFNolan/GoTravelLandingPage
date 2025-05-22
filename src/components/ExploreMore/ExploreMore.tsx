@@ -1,15 +1,19 @@
 import { useState } from "react";
-import { locations } from "../../utils/content";
 import CaretUp from "../Icons/CaretUp";
 import LocationCard from "./LocationCard";
 import { LOCARTION_CARDS_SHOWN } from "../../utils/constants";
+import useQuerylocations from "../../hooks/useQueryLocations";
+import Loader from "../Loader";
+import Error from "../Error";
 
 export default function ExploreMore() {
 
+  const {locations, error, isLoading} = useQuerylocations();
+
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-    const totalLocations = locations.length;
-    const renderLocations = locations.slice(currentIndex, currentIndex + LOCARTION_CARDS_SHOWN);
+    const totalLocations = locations?.length || 0;
+    const renderLocations = locations?.slice(currentIndex, currentIndex + LOCARTION_CARDS_SHOWN);
 
     const handleRightClick = () => setCurrentIndex(prevIndex => prevIndex + 1)
     const handleLeftClick = () => setCurrentIndex(prevIndex => prevIndex - 1)
@@ -34,11 +38,18 @@ export default function ExploreMore() {
           </div>
         </div>
 
-        <ul className="mt-33 grid grid-cols-3 gap-x-29 gap-y-29">
-            {renderLocations.map(location => (
+        {/* Loading State */}
+        {isLoading && !error && <Loader />}
+
+        {/* Succes State */}
+        {!isLoading && !error && (<ul className="mt-33 grid grid-cols-3 gap-x-29 gap-y-29">
+            {renderLocations?.map(location => (
                 <LocationCard key={location.id} location={location} />
             ))}
-        </ul>
+        </ul>)}
+
+        {/* Error State */}
+        {!isLoading && error && <Error>It looks like something went wrong while loading our tabel locations.</Error>}
       </div>
     </section>
   );

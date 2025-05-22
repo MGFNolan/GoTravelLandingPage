@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getLocations } from "../api/api";
 
-export default function useQuerylocation() {
+export default function useQuerylocations() {
   const {
     data: locations,
     error,
