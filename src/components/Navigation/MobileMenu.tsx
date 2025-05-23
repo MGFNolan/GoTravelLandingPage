@@ -4,11 +4,11 @@ import Close from "../Icons/Close";
 import { navigationLinks } from "../../utils/content";
 import CaretUp from "../Icons/CaretUp";
 import MobileDropdown from "./MobileDropdown";
+import { useMenuContext } from "../../context/MobileMenuContext";
 
 export default function MobileMenu() {
+  const { menuOpened } = useMenuContext();
   const [activeLinkId, setActiveLinkId] = useState<number>(-1);
-
-  const menuOpened = false;
 
   return (
     <motion.div
