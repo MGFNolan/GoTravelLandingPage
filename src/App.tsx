@@ -21,6 +21,9 @@ import Testimonials from "./components/Testimonials/Testimonials.tsx";
 // Footer
 import Footer from "./components/Footer.tsx";
 
+// Mobile Menu
+import MobileMenu from "./components/Navigation/MobileMenu.tsx";
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -30,6 +33,7 @@ function App() {
         <Header>
           <Navigation />
           <Hero />
+          <MobileMenu />
         </Header>
 
         <Main>
@@ -42,6 +46,8 @@ function App() {
         </Main>
 
         <Footer />
+
+
       </Page>
       <ReactQueryDevtools />
     </QueryClientProvider>
